@@ -8,15 +8,14 @@ import retrofit2.http.POST;
 
 public interface In_Api_Service {
 
-    @POST("register")
+    @POST("https://proyecto-studium.herokuapp.com/api/users/setUser")
     @FormUrlEncoded
     Observable<String> registerUser(
             @Field("Nombre") String name_user,
             @Field("Apellidos") String surname_user,
             @Field("Email") String email_user,
             @Field("Contraseña") String pass_user,
-            @Field("Tipo_Usuario") String type_user,
-            @Field("Fecha_Registro") String data_register_user);
+            @Field("Tipo_Usuario") String type_user);
 
 
     @POST("login")

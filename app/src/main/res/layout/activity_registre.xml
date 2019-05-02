@@ -1,49 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/city2">
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/logo1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:layout_marginTop="40dp">
+    android:id="@+id/scroll_login"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
 
-        <LinearLayout
+    <LinearLayout
+        android:id="@+id/ly_padre_registre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp">
+
+        <ImageView
+            android:id="@+id/img_logo_registre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:contentDescription="@string/desc_img_logo"
+            android:src="@drawable/img_logo" />
+
+        <LinearLayout
+            android:id="@+id/ly_datos_registre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#40C42152"
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/ly_mail_registre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
                 android:background="@drawable/border"
                 android:orientation="horizontal"
                 android:padding="16dp">
 
                 <ImageView
+                    android:id="@+id/img_mail_registre"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/img_mail1_login"
                     android:src="@drawable/email" />
 
                 <EditText
                     android:id="@+id/et_mail_registre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:autofillHints=""
                     android:background="#00000000"
                     android:hint="@string/hint_mail"
@@ -51,15 +59,12 @@
                     android:letterSpacing="0.1"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
-                    android:textSize="16dp" />
+                    android:textSize="16sp"
+                    tools:targetApi="o" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#5fff"></LinearLayout>
-
-            <LinearLayout
+                android:id="@+id/ly_user_registre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
@@ -68,16 +73,18 @@
                 android:padding="16dp">
 
                 <ImageView
+                    android:id="@+id/img_user_registre"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/img_user_login"
                     android:src="@drawable/user" />
 
                 <EditText
                     android:id="@+id/et_user_registre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:autofillHints=""
                     android:background="#00000000"
                     android:hint="@string/hint_user_login"
@@ -85,15 +92,12 @@
                     android:letterSpacing="0.1"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
-                    android:textSize="16dp" />
+                    android:textSize="16sp"
+                    tools:targetApi="o" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#5fff"></LinearLayout>
-
-            <LinearLayout
+                android:id="@+id/ly_pass_registre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
@@ -102,31 +106,31 @@
                 android:padding="16dp">
 
                 <ImageView
+                    android:id="@+id/img_pass_registre"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/img_pass_login"
                     android:src="@drawable/password" />
 
                 <EditText
                     android:id="@+id/et_pass_registre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:autofillHints=""
                     android:background="#00000000"
                     android:hint="@string/hint_pass_login"
                     android:inputType="textPassword"
                     android:letterSpacing="0.1"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
-                    android:textSize="16dp" />
+                    android:textSize="16sp"
+                    tools:targetApi="o" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#5fff"></LinearLayout>
-
-            <LinearLayout
+                android:id="@+id/ly_mobile_registre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
@@ -135,59 +139,47 @@
                 android:padding="16dp">
 
                 <ImageView
-                    android:id="@+id/img_logo"
+                    android:id="@+id/img_mobile_registre"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/img_mobile_login"
                     android:src="@drawable/mobile" />
 
                 <EditText
                     android:id="@+id/et_mobile_registre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
+                    android:autofillHints=""
                     android:background="#00000000"
                     android:hint="@string/hint_mobile"
                     android:inputType="number"
                     android:letterSpacing="0.1"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
-                    android:textSize="16dp" />
+                    android:textSize="16sp"
+                    tools:targetApi="o" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="#5fff"></LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginRight="25dp"
-        android:background="@color/colorAccent">
-
-        <TextView
-            android:id="@+id/Registre"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/ly3_registre"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/border"
-            android:gravity="center"
-            android:padding="15dp"
-            android:text="@string/btn_singup"
-            android:textColor="#fff"
-            android:textStyle="bold" />
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button2"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/btn_singup"
+                android:textColor="#40C421" />
+
+        </LinearLayout>
+
     </LinearLayout>
-    <TextView
-        android:id="@+id/loginInf"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text=" El conocimiento de idiomas es la puerta a la sabiduría"
-        android:textColor="#fff"
-        android:gravity="center"
-        android:layout_marginTop="550dp"/>
-</RelativeLayout>
+
+</ScrollView>

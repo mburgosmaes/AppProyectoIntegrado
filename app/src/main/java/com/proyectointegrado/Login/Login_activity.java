@@ -1,4 +1,5 @@
 package com.proyectointegrado.Login;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,9 +27,9 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
     EditText et_email_login, et_pass_login, et_user, et_email_register, et_pass_register;
     Button btn_singup, btn_login;
     ImageView img_logo;
-
     CompositeDisposable compositeDisposable = new CompositeDisposable();
     In_Api_Service in_api_service;
+    Intent i;
 
     @Override
     protected void onStop() {
@@ -36,6 +37,7 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
         super.onStop();
     }
 
+    //todo: la imagen del logo redirecciónará a la página web. El btRegistro y login en proceso.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +46,12 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
         et_pass_login = findViewById(R.id.et_pass);
         btn_login = findViewById(R.id.btn_login);
         btn_singup = findViewById(R.id.btn_singup);
-        img_logo = findViewById(R.id.img_logo);
+        //img_logo = findViewById(R.id.img_logo);
         btn_login.setOnClickListener(this);
         btn_singup.setOnClickListener(this);
         Retrofit retrofitClient = RetrofitClient.getInstance();
         in_api_service = retrofitClient.create(In_Api_Service.class);
+
 
     }
 
@@ -74,36 +77,39 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
             );
         }
     }
-    private void registerUSer(String name, String surname, String email, String pass, String tpye, String date) {
-        final View register_layout = LayoutInflater.from(Login_activity.this)
-                .inflate(R.layout.activity_registre,null);
-
-        new MaterialStyledDialog.Builder(Login_activity.this)
-                .setIcon(R.drawable.ic_launcher_background)
-                .setTitle("REGISTRO")
-                .setDescription("Por favor, completa todos los campos")
-                .setCustomView(register_layout)
-                .setNegativeText("CANCELAR")
-                .onNegative(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                      //  et_email_register = register_layout.findViewById(R.id.et_email_layout);
-
-                    }
-                }).show();
-    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId())
         {
             case R.id.btn_login:
-                loginUser(et_email_login.getText().toString(),et_pass_login.getText().toString());
+               loginUser(et_email_login.getText().toString(),et_pass_login.getText().toString());
+
+
+
+               //if login();
+                i = new Intent(this, Registre_activity.class);
+                startActivity(i);
+                //else error;
+
                 break;
 
             case R.id.btn_singup:
+                Intent i = new Intent(this, Registre_activity.class);
+                startActivity(i);
                 break;
         }
 
     }
+
+    public boolean login()
+    {
+        Boolean access=false;
+
+        
+
+        return access;
+    }
+
+
 }

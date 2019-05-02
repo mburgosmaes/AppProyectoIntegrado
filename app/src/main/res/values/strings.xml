@@ -3,7 +3,7 @@
     <string name="hint_user_login">Username</string>
     <string name="hint_pass_login">Password</string>
     <string name="btn_login">Login</string>
-    <string name="btn_singup">SingUp</string>
+    <string name="btn_singup">Register</string>
     <string name="hint_mail">Email Address</string>
     <string name="hint_mobile">Mobile Number</string>
     <string name="name_app">OkeyListen</string>
@@ -13,4 +13,9 @@
     <string name="btn_cancel">CANCELAR</string>
     <string name="title_dialog_register">REGISTRO</string>
     <string name="text_dialog_register">Por favor, completa todos los campos</string>
+    <string name="img_mail1_login">Icono representando un sobre</string>
+    <string name="img_user_login">Icono representando una persona</string>
+    <string name="img_pass_login">Icono representando un candado</string>
+    <string name="img_mobile_login">Icono representando un teléfono</string>
+    <string name="texto_login">El conocimiento de idiomas es la puerta a la sabiduría</string>
 </resources>
