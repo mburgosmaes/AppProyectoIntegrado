@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">LenguagesApp</string>
-    <string name="hint_user_login">Username</string>
+    <string name="hint_user_login">Name</string>
     <string name="hint_pass_login">Password</string>
     <string name="btn_login">Login</string>
     <string name="btn_singup">Register</string>
     <string name="hint_mail">Email Address</string>
-    <string name="hint_mobile">Mobile Number</string>
+    <string name="hint_surname">Surname</string>
+    <string name="hint_type">Type</string>
     <string name="name_app">OkeyListen</string>
     <string name="desc_img_logo">Imagen del logo de la app</string>
     <string name="empty_email">El email no puede estar vacío</string>
@@ -16,6 +17,10 @@
     <string name="img_mail1_login">Icono representando un sobre</string>
     <string name="img_user_login">Icono representando una persona</string>
     <string name="img_pass_login">Icono representando un candado</string>
-    <string name="img_mobile_login">Icono representando un teléfono</string>
+    <string name="img_surname_login">Icono representando una persona</string>
     <string name="texto_login">El conocimiento de idiomas es la puerta a la sabiduría</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

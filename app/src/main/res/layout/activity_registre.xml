@@ -32,38 +32,6 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/ly_mail_registre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <ImageView
-                    android:id="@+id/img_mail_registre"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/img_mail1_login"
-                    android:src="@drawable/email" />
-
-                <EditText
-                    android:id="@+id/et_mail_registre"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:autofillHints=""
-                    android:background="#00000000"
-                    android:hint="@string/hint_mail"
-                    android:inputType="text"
-                    android:letterSpacing="0.1"
-                    android:textColor="#fff"
-                    android:textColorHint="#fff"
-                    android:textSize="16sp"
-                    tools:targetApi="o" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/ly_user_registre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,6 +57,71 @@
                     android:background="#00000000"
                     android:hint="@string/hint_user_login"
                     android:inputType="text"
+                    android:letterSpacing="0.1"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    android:textSize="16sp"
+                    tools:targetApi="o" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_surname_registre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/border"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/img_surname_registre"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/img_surname_login"
+                    android:src="@drawable/mobile" />
+
+                <EditText
+                    android:id="@+id/et_surname_registre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:autofillHints=""
+                    android:background="#00000000"
+                    android:hint="@string/hint_surname"
+                    android:inputType="text"
+                    android:letterSpacing="0.1"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    android:textSize="16sp"
+                    tools:targetApi="o" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_mail_registre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/img_mail_registre"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/img_mail1_login"
+                    android:src="@drawable/email" />
+
+                <EditText
+                    android:id="@+id/et_mail_registre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:autofillHints=""
+                    android:background="#00000000"
+                    android:hint="@string/hint_mail"
+                    android:inputType="textWebEmailAddress"
                     android:letterSpacing="0.1"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
@@ -130,31 +163,31 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ly_mobile_registre"
+                android:id="@+id/ly_type_registre"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="1dp"
                 android:background="@drawable/border"
                 android:orientation="horizontal"
                 android:padding="16dp">
 
                 <ImageView
-                    android:id="@+id/img_mobile_registre"
+                    android:id="@+id/img_type_registre"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:contentDescription="@string/img_mobile_login"
-                    android:src="@drawable/mobile" />
+                    android:contentDescription="@string/img_pass_login"
+                    android:src="@drawable/password" />
 
                 <EditText
-                    android:id="@+id/et_mobile_registre"
+                    android:id="@+id/et_type_registre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:autofillHints=""
                     android:background="#00000000"
-                    android:hint="@string/hint_mobile"
-                    android:inputType="number"
+                    android:hint="@string/hint_type"
+                    android:inputType="text"
                     android:letterSpacing="0.1"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
@@ -171,7 +204,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_register"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

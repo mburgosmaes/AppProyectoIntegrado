@@ -1,9 +1,22 @@
 package com.proyectointegrado.Database_manager;
 
+import android.support.v7.widget.RecyclerView;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class Users {
-    String name, surname,email, pass, type;
+
+    private String name;
+    private String surname;
+    private String email;
+    private String pass;
+    private String type;
+
+    public Users() {
+    }
 
     public Users(String name, String surname, String email, String pass, String type) {
         this.name = name;
