@@ -2,44 +2,30 @@ package com.proyectointegrado.Login;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.gson.JsonObject;
 import com.proyecto.appproyectointegrado.R;
 import com.proyectointegrado.Database_manager.Users;
 import com.proyectointegrado.Database_manager.Utils;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.util.ArrayList;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public class Login_activity extends AppCompatActivity implements View.OnClickListener {
     EditText et_email_login, et_pass_login, et_user, et_email_register, et_pass_register;
@@ -51,9 +37,10 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
     private static Users users;
     private static Utils utils;
     private static String TAG = "PRUEBA";
-    private static String email, pass;
+    private static String insert_email, insert_pass;
     private static String ALLOK;
     private static List<Users> listUser;
+    private static JSONObject jsonObject;
 
     //todo: la imagen del logo redirecciónará a la página web.
     @Override
@@ -72,7 +59,7 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    public void mostrarToast(String mensaje) {
+    private void mostrarToast(String mensaje) {
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
 
@@ -80,8 +67,8 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
-                email = et_email_login.getText().toString().trim();
-                pass = et_pass_login.getText().toString().trim();
+                insert_email = et_email_login.getText().toString().trim();
+                insert_pass = et_pass_login.getText().toString().trim();
                 new ExecuteTaskLoginUser().execute();
 
                 // i = new Intent(this, .class);
@@ -102,81 +89,99 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
         @Override
         protected String doInBackground(String... params) {
 
-            String email2="";
-            String pass2="";
-
-            users = new Users();
-
             client = new DefaultHttpClient();
-            respJSONObject = null;
+            jsonObject = null;
             HttpConnectionParams.setConnectionTimeout(client.getParams(), 1000);
 
             try {
 
-                HttpGet get = new HttpGet("https://proyecto-studium.herokuapp.com/api/user/getEmail/admin@admin.com");
-               /* ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-                nameValuePairs.add(new BasicNameValuePair("Email", email));
-                nameValuePairs.add(new BasicNameValuePair("Pass", pass));*/
+                HttpGet get = new HttpGet("https://proyecto-studium.herokuapp.com/api/user/getEmail/"+ insert_email);
 
                 HttpResponse response = client.execute(get);
                 String responseStr = EntityUtils.toString(response.getEntity());
                 JSONObject object = new JSONObject(responseStr);
-                log("ESTE ES OBJETO -------"+object.toString());
-                email2 = object.getString("Email");
-                log("Email:"+email2);
-                //JSONArray respJSONArray = new JSONArray(object);
-                //email2 = object.getString("Pass");
 
-               /* for (int i = 0; i < object.length(); i++) {
-                    respJSONObject = (JSONObject) respJSONArray.getJSONObject(i);
-                   // respJSONObject = respJSONObject.getJSONObject("Email");
-                    email2 = respJSONObject.getString("Email");
-                   // montar(email2, "123");
-                    //log(users.toString());
+                jsonObject = object.getJSONObject("emailDocument");
 
-                    log("Email2: "+email2);
-                    //pass2 = respJSONObject.getString("Pass");
-                }*/
 
-                    if (responseStr != null) {
+
+                log("ESTE ES OBJETO -------"+jsonObject.toString());
+
+
+                if (responseStr != null) {
                         log("SI");
                         ALLOK="si";
                     }
 
             } catch (Exception e) {
-                e.getMessage();
+                //log( e.getMessage());
                 ALLOK="no";
             }
-            //listUser = new ArrayList<Users>();
-           // listUser.add(users);
+
+
+            /*if (emailUser.equalsIgnoreCase(insert_email) && pass.equals(insert_pass))
+            {
+                ALLOK="si";
+            }
+            else
+            {
+                ALLOK="no";
+            }*/
+
             return ALLOK;
         }
 
         @Override
         protected void onPostExecute(String ALLOK2) {
+            String emailUser = "";
+            String pass ="";
+            String decrypt_pass="";
             super.onPostExecute(ALLOK2);
+            //Si se obtiene objeto
             if (ALLOK2.equalsIgnoreCase("si"))
             {
-                log("TODO OK");
+                try {
+                    emailUser = jsonObject.getString("Email");
+                    pass = jsonObject.getString("Pass");
 
+                    decrypt_pass = Utils.encrypt_pass_sha512(insert_pass);
+
+                    log("PASS1:" +pass);
+                    log("PASS2: "+ decrypt_pass);
+                }
+                catch (JSONException e)
+                {
+                    log(e.getMessage());
+                }
+
+                if (emailUser.equalsIgnoreCase(insert_email) && pass.equals(decrypt_pass))
+                {
+                    //Aquí llamar a nueva actividad.
+                    log("Acceso correcto");
+
+                }
+                else
+                {
+                    log("Email o pass incorrectos.");
+                }
+
+                //Si no se obtiene objeto.
             }
             else
             {
-                log("NO OK");
-
+                log("Email o pass incorrectos, inténtelo de nuevo");
             }
         }
     }
 
-    public void log(String mensaje) {
+    private void log(String mensaje) {
         Log.i(TAG, mensaje);
     }
-    public Users montar(String e, String p)
+    private Users montar(String e, String p)
     {
         users.setEmail(e);
         users.setPass(p);
 
         return users;
     }
-
 }

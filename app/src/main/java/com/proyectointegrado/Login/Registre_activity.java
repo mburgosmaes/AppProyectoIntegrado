@@ -30,6 +30,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +57,7 @@ public class Registre_activity extends AppCompatActivity implements View.OnClick
     private static Intent i;
     private static Button btn_register;
     private static EditText et_name, et_surname, et_pass, et_email, et_type;
-    private static String name, surname, email, pass, type;
+    private static String name, surname, email, insert_pass, pass, type;
     private static  DefaultHttpClient client;
     private static  JSONObject respJSONObject;
     private static Users user;
@@ -102,8 +104,14 @@ public class Registre_activity extends AppCompatActivity implements View.OnClick
                 name = et_name.getText().toString().trim();
                 surname = et_surname.getText().toString().trim();
                 email = et_email.getText().toString().trim();
-                pass = et_pass.getText().toString().trim();
+                insert_pass = et_pass.getText().toString().trim();
                 type = et_type.getText().toString().trim();
+
+                pass = Utils.encrypt_pass_sha512(insert_pass);
+
+                log(insert_pass);
+                log(pass);
+
                 new ExecuteTaskRegisterUser().execute();
         }
     }
