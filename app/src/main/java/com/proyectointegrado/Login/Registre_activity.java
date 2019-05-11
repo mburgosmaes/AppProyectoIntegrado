@@ -73,11 +73,6 @@ public class Registre_activity extends AppCompatActivity implements View.OnClick
         et_email = findViewById(R.id.et_mail_registre);
         et_pass = findViewById(R.id.et_pass_registre);
         et_type = findViewById(R.id.et_type_registre);
-        et_name.setText("Adolfo");
-        et_surname.setText("Prado");
-        et_email.setText("adolf@gmail.com");
-        et_pass.setText("123");
-        et_type.setText("Admin");
 
 
         //in_api_service = Utils.getAPIService();

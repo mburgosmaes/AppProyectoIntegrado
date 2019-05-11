@@ -118,16 +118,6 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
                 ALLOK="no";
             }
 
-
-            /*if (emailUser.equalsIgnoreCase(insert_email) && pass.equals(insert_pass))
-            {
-                ALLOK="si";
-            }
-            else
-            {
-                ALLOK="no";
-            }*/
-
             return ALLOK;
         }
 
@@ -145,9 +135,6 @@ public class Login_activity extends AppCompatActivity implements View.OnClickLis
                     pass = jsonObject.getString("Pass");
 
                     decrypt_pass = Utils.encrypt_pass_sha512(insert_pass);
-
-                    log("PASS1:" +pass);
-                    log("PASS2: "+ decrypt_pass);
                 }
                 catch (JSONException e)
                 {
